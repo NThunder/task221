@@ -1,21 +1,27 @@
 import sys
 
 class State:
+
+
     def __init__(self):
-        self.long_len = 0
+    	self.long_len = 0
         self.link = -1
         self.next = {}
-        
         self.first_pos_of_end = 1
 
 class SuffAutomation:
+
+
     def __init__(self):
+
         self.states = []
         self.last_st = 0
         self.states.append(State())
         self.max_size = 1
         
     def add_char(self, c):
+
+
         curr_state = self.max_size
         self.max_size += 1
         self.states.append(State())
@@ -49,10 +55,19 @@ class SuffAutomation:
     
     def build_suff_tree(self, text, create_new = True):
 
+
+    	if create_new:
+	        self.states = []
+	        self.last_st = 0
+	        self.states.append(State())
+	        self.max_size = 1
+
         for c in text:
             self.add_char(c)
         
     def search_str_in_text(self, string):
+
+
         curr_state = self.states[0]
         first_pos = -1
         for c in string:
@@ -82,20 +97,10 @@ large_text.close()
 print("Please, entry number of search queries.")
 n = int(input())
 for i in range(n):
-	print("Please, entry search querie")
+	print("Please, entry search querie.")
 	string = input()
 	entrance = suff_auto.search_str_in_text(string)
 	if (entrance != -1):
-		print("Entrance in : ", entrance, " position.")
+		print("Entrance in ", entrance, " position.")
 	else:
 		print("No entrance.")
-	
-
-
-
-
-
-
-
-
-
